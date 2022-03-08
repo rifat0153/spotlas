@@ -14,13 +14,495 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-FeedList _$FeedListFromJson(Map<String, dynamic> json) {
+/// @nodoc
+class _$FeedListStateTearOff {
+  const _$FeedListStateTearOff();
+
+  _FeedListState_Loading loading() {
+    return const _FeedListState_Loading();
+  }
+
+  _FeedListState_Data data({required List<Feed> feedList}) {
+    return _FeedListState_Data(
+      feedList: feedList,
+    );
+  }
+
+  _FeedListState_Error error(String error) {
+    return _FeedListState_Error(
+      error,
+    );
+  }
+}
+
+/// @nodoc
+const $FeedListState = _$FeedListStateTearOff();
+
+/// @nodoc
+mixin _$FeedListState {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<Feed> feedList) data,
+    required TResult Function(String error) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Feed> feedList)? data,
+    TResult Function(String error)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Feed> feedList)? data,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FeedListState_Loading value) loading,
+    required TResult Function(_FeedListState_Data value) data,
+    required TResult Function(_FeedListState_Error value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_FeedListState_Loading value)? loading,
+    TResult Function(_FeedListState_Data value)? data,
+    TResult Function(_FeedListState_Error value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FeedListState_Loading value)? loading,
+    TResult Function(_FeedListState_Data value)? data,
+    TResult Function(_FeedListState_Error value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FeedListStateCopyWith<$Res> {
+  factory $FeedListStateCopyWith(
+          FeedListState value, $Res Function(FeedListState) then) =
+      _$FeedListStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$FeedListStateCopyWithImpl<$Res>
+    implements $FeedListStateCopyWith<$Res> {
+  _$FeedListStateCopyWithImpl(this._value, this._then);
+
+  final FeedListState _value;
+  // ignore: unused_field
+  final $Res Function(FeedListState) _then;
+}
+
+/// @nodoc
+abstract class _$FeedListState_LoadingCopyWith<$Res> {
+  factory _$FeedListState_LoadingCopyWith(_FeedListState_Loading value,
+          $Res Function(_FeedListState_Loading) then) =
+      __$FeedListState_LoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$FeedListState_LoadingCopyWithImpl<$Res>
+    extends _$FeedListStateCopyWithImpl<$Res>
+    implements _$FeedListState_LoadingCopyWith<$Res> {
+  __$FeedListState_LoadingCopyWithImpl(_FeedListState_Loading _value,
+      $Res Function(_FeedListState_Loading) _then)
+      : super(_value, (v) => _then(v as _FeedListState_Loading));
+
+  @override
+  _FeedListState_Loading get _value => super._value as _FeedListState_Loading;
+}
+
+/// @nodoc
+
+class _$_FeedListState_Loading implements _FeedListState_Loading {
+  const _$_FeedListState_Loading();
+
+  @override
+  String toString() {
+    return 'FeedListState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _FeedListState_Loading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<Feed> feedList) data,
+    required TResult Function(String error) error,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Feed> feedList)? data,
+    TResult Function(String error)? error,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Feed> feedList)? data,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FeedListState_Loading value) loading,
+    required TResult Function(_FeedListState_Data value) data,
+    required TResult Function(_FeedListState_Error value) error,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_FeedListState_Loading value)? loading,
+    TResult Function(_FeedListState_Data value)? data,
+    TResult Function(_FeedListState_Error value)? error,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FeedListState_Loading value)? loading,
+    TResult Function(_FeedListState_Data value)? data,
+    TResult Function(_FeedListState_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FeedListState_Loading implements FeedListState {
+  const factory _FeedListState_Loading() = _$_FeedListState_Loading;
+}
+
+/// @nodoc
+abstract class _$FeedListState_DataCopyWith<$Res> {
+  factory _$FeedListState_DataCopyWith(
+          _FeedListState_Data value, $Res Function(_FeedListState_Data) then) =
+      __$FeedListState_DataCopyWithImpl<$Res>;
+  $Res call({List<Feed> feedList});
+}
+
+/// @nodoc
+class __$FeedListState_DataCopyWithImpl<$Res>
+    extends _$FeedListStateCopyWithImpl<$Res>
+    implements _$FeedListState_DataCopyWith<$Res> {
+  __$FeedListState_DataCopyWithImpl(
+      _FeedListState_Data _value, $Res Function(_FeedListState_Data) _then)
+      : super(_value, (v) => _then(v as _FeedListState_Data));
+
+  @override
+  _FeedListState_Data get _value => super._value as _FeedListState_Data;
+
+  @override
+  $Res call({
+    Object? feedList = freezed,
+  }) {
+    return _then(_FeedListState_Data(
+      feedList: feedList == freezed
+          ? _value.feedList
+          : feedList // ignore: cast_nullable_to_non_nullable
+              as List<Feed>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_FeedListState_Data implements _FeedListState_Data {
+  const _$_FeedListState_Data({required this.feedList});
+
+  @override
+  final List<Feed> feedList;
+
+  @override
+  String toString() {
+    return 'FeedListState.data(feedList: $feedList)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _FeedListState_Data &&
+            const DeepCollectionEquality().equals(other.feedList, feedList));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(feedList));
+
+  @JsonKey(ignore: true)
+  @override
+  _$FeedListState_DataCopyWith<_FeedListState_Data> get copyWith =>
+      __$FeedListState_DataCopyWithImpl<_FeedListState_Data>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<Feed> feedList) data,
+    required TResult Function(String error) error,
+  }) {
+    return data(feedList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Feed> feedList)? data,
+    TResult Function(String error)? error,
+  }) {
+    return data?.call(feedList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Feed> feedList)? data,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (data != null) {
+      return data(feedList);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FeedListState_Loading value) loading,
+    required TResult Function(_FeedListState_Data value) data,
+    required TResult Function(_FeedListState_Error value) error,
+  }) {
+    return data(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_FeedListState_Loading value)? loading,
+    TResult Function(_FeedListState_Data value)? data,
+    TResult Function(_FeedListState_Error value)? error,
+  }) {
+    return data?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FeedListState_Loading value)? loading,
+    TResult Function(_FeedListState_Data value)? data,
+    TResult Function(_FeedListState_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (data != null) {
+      return data(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FeedListState_Data implements FeedListState {
+  const factory _FeedListState_Data({required List<Feed> feedList}) =
+      _$_FeedListState_Data;
+
+  List<Feed> get feedList;
+  @JsonKey(ignore: true)
+  _$FeedListState_DataCopyWith<_FeedListState_Data> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$FeedListState_ErrorCopyWith<$Res> {
+  factory _$FeedListState_ErrorCopyWith(_FeedListState_Error value,
+          $Res Function(_FeedListState_Error) then) =
+      __$FeedListState_ErrorCopyWithImpl<$Res>;
+  $Res call({String error});
+}
+
+/// @nodoc
+class __$FeedListState_ErrorCopyWithImpl<$Res>
+    extends _$FeedListStateCopyWithImpl<$Res>
+    implements _$FeedListState_ErrorCopyWith<$Res> {
+  __$FeedListState_ErrorCopyWithImpl(
+      _FeedListState_Error _value, $Res Function(_FeedListState_Error) _then)
+      : super(_value, (v) => _then(v as _FeedListState_Error));
+
+  @override
+  _FeedListState_Error get _value => super._value as _FeedListState_Error;
+
+  @override
+  $Res call({
+    Object? error = freezed,
+  }) {
+    return _then(_FeedListState_Error(
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_FeedListState_Error implements _FeedListState_Error {
+  const _$_FeedListState_Error(this.error);
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'FeedListState.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _FeedListState_Error &&
+            const DeepCollectionEquality().equals(other.error, error));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+
+  @JsonKey(ignore: true)
+  @override
+  _$FeedListState_ErrorCopyWith<_FeedListState_Error> get copyWith =>
+      __$FeedListState_ErrorCopyWithImpl<_FeedListState_Error>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<Feed> feedList) data,
+    required TResult Function(String error) error,
+  }) {
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Feed> feedList)? data,
+    TResult Function(String error)? error,
+  }) {
+    return error?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Feed> feedList)? data,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FeedListState_Loading value) loading,
+    required TResult Function(_FeedListState_Data value) data,
+    required TResult Function(_FeedListState_Error value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_FeedListState_Loading value)? loading,
+    TResult Function(_FeedListState_Data value)? data,
+    TResult Function(_FeedListState_Error value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FeedListState_Loading value)? loading,
+    TResult Function(_FeedListState_Data value)? data,
+    TResult Function(_FeedListState_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FeedListState_Error implements FeedListState {
+  const factory _FeedListState_Error(String error) = _$_FeedListState_Error;
+
+  String get error;
+  @JsonKey(ignore: true)
+  _$FeedListState_ErrorCopyWith<_FeedListState_Error> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Feed _$FeedFromJson(Map<String, dynamic> json) {
   return _FeedList.fromJson(json);
 }
 
 /// @nodoc
-class _$FeedListTearOff {
-  const _$FeedListTearOff();
+class _$FeedTearOff {
+  const _$FeedTearOff();
 
   _FeedList call(
       {required String id,
@@ -115,16 +597,16 @@ class _$FeedListTearOff {
     );
   }
 
-  FeedList fromJson(Map<String, Object?> json) {
-    return FeedList.fromJson(json);
+  Feed fromJson(Map<String, Object?> json) {
+    return Feed.fromJson(json);
   }
 }
 
 /// @nodoc
-const $FeedList = _$FeedListTearOff();
+const $Feed = _$FeedTearOff();
 
 /// @nodoc
-mixin _$FeedList {
+mixin _$Feed {
   String get id => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   String get authorId => throw _privateConstructorUsedError;
@@ -175,14 +657,13 @@ mixin _$FeedList {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $FeedListCopyWith<FeedList> get copyWith =>
-      throw _privateConstructorUsedError;
+  $FeedCopyWith<Feed> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FeedListCopyWith<$Res> {
-  factory $FeedListCopyWith(FeedList value, $Res Function(FeedList) then) =
-      _$FeedListCopyWithImpl<$Res>;
+abstract class $FeedCopyWith<$Res> {
+  factory $FeedCopyWith(Feed value, $Res Function(Feed) then) =
+      _$FeedCopyWithImpl<$Res>;
   $Res call(
       {String id,
       DateTime createdAt,
@@ -236,12 +717,12 @@ abstract class $FeedListCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FeedListCopyWithImpl<$Res> implements $FeedListCopyWith<$Res> {
-  _$FeedListCopyWithImpl(this._value, this._then);
+class _$FeedCopyWithImpl<$Res> implements $FeedCopyWith<$Res> {
+  _$FeedCopyWithImpl(this._value, this._then);
 
-  final FeedList _value;
+  final Feed _value;
   // ignore: unused_field
-  final $Res Function(FeedList) _then;
+  final $Res Function(Feed) _then;
 
   @override
   $Res call({
@@ -502,7 +983,7 @@ class _$FeedListCopyWithImpl<$Res> implements $FeedListCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$FeedListCopyWith<$Res> implements $FeedListCopyWith<$Res> {
+abstract class _$FeedListCopyWith<$Res> implements $FeedCopyWith<$Res> {
   factory _$FeedListCopyWith(_FeedList value, $Res Function(_FeedList) then) =
       __$FeedListCopyWithImpl<$Res>;
   @override
@@ -563,7 +1044,7 @@ abstract class _$FeedListCopyWith<$Res> implements $FeedListCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$FeedListCopyWithImpl<$Res> extends _$FeedListCopyWithImpl<$Res>
+class __$FeedListCopyWithImpl<$Res> extends _$FeedCopyWithImpl<$Res>
     implements _$FeedListCopyWith<$Res> {
   __$FeedListCopyWithImpl(_FeedList _value, $Res Function(_FeedList) _then)
       : super(_value, (v) => _then(v as _FeedList));
@@ -942,7 +1423,7 @@ class _$_FeedList implements _FeedList {
 
   @override
   String toString() {
-    return 'FeedList(id: $id, createdAt: $createdAt, authorId: $authorId, placeId: $placeId, description: $description, defaultPhotoUrl: $defaultPhotoUrl, defaultPhotoResolutions: $defaultPhotoResolutions, photoUrls: $photoUrls, placeLocation: $placeLocation, photosResolutions: $photosResolutions, authorPhotosResolutions: $authorPhotosResolutions, likes: $likes, comments: $comments, categories: $categories, address: $address, feedListTags: $feedListTags, userTags: $userTags, authorVerified: $authorVerified, tags: $tags, placeholderLogo: $placeholderLogo, authorUsername: $authorUsername, authorFullName: $authorFullName, placeName: $placeName, placeLocationName: $placeLocationName, placeLocationNameO: $placeLocationNameO, placePrimaryCategory: $placePrimaryCategory, categoryDisplayName: $categoryDisplayName, placeLogoUrl: $placeLogoUrl, status: $status, distance: $distance, authorPhotoUrl: $authorPhotoUrl, isLiked: $isLiked, isBookmarked: $isBookmarked, isFollowing: $isFollowing, numberOfComments: $numberOfComments, numberOfLikes: $numberOfLikes, numberOfPhotos: $numberOfPhotos, blackBorder: $blackBorder, imageSource: $imageSource, isGoogleSource: $isGoogleSource, dayMode: $dayMode, isRecommendation: $isRecommendation, score: $score, ratio: $ratio)';
+    return 'Feed(id: $id, createdAt: $createdAt, authorId: $authorId, placeId: $placeId, description: $description, defaultPhotoUrl: $defaultPhotoUrl, defaultPhotoResolutions: $defaultPhotoResolutions, photoUrls: $photoUrls, placeLocation: $placeLocation, photosResolutions: $photosResolutions, authorPhotosResolutions: $authorPhotosResolutions, likes: $likes, comments: $comments, categories: $categories, address: $address, feedListTags: $feedListTags, userTags: $userTags, authorVerified: $authorVerified, tags: $tags, placeholderLogo: $placeholderLogo, authorUsername: $authorUsername, authorFullName: $authorFullName, placeName: $placeName, placeLocationName: $placeLocationName, placeLocationNameO: $placeLocationNameO, placePrimaryCategory: $placePrimaryCategory, categoryDisplayName: $categoryDisplayName, placeLogoUrl: $placeLogoUrl, status: $status, distance: $distance, authorPhotoUrl: $authorPhotoUrl, isLiked: $isLiked, isBookmarked: $isBookmarked, isFollowing: $isFollowing, numberOfComments: $numberOfComments, numberOfLikes: $numberOfLikes, numberOfPhotos: $numberOfPhotos, blackBorder: $blackBorder, imageSource: $imageSource, isGoogleSource: $isGoogleSource, dayMode: $dayMode, isRecommendation: $isRecommendation, score: $score, ratio: $ratio)';
   }
 
   @override
@@ -1083,7 +1564,7 @@ class _$_FeedList implements _FeedList {
   }
 }
 
-abstract class _FeedList implements FeedList {
+abstract class _FeedList implements Feed {
   const factory _FeedList(
       {required String id,
       required DateTime createdAt,

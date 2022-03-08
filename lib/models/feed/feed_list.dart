@@ -8,15 +8,22 @@ import 'dart:convert';
 part 'feed_list.freezed.dart';
 part 'feed_list.g.dart';
 
-List<FeedList> feedListFromJson(String str) =>
-    List<FeedList>.from(json.decode(str).map((x) => FeedList.fromJson(x)));
+List<Feed> feedListFromJson(String str) =>
+    List<Feed>.from(json.decode(str).map((x) => Feed.fromJson(x)));
 
-String feedListToJson(List<FeedList> data) =>
+String feedListToJson(List<Feed> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 @freezed
-abstract class FeedList with _$FeedList {
-  const factory FeedList({
+class FeedListState with _$FeedListState{
+  const factory FeedListState.loading() = _FeedListState_Loading;
+  const factory FeedListState.data({required  List<Feed> feedList }) = _FeedListState_Data;
+  const factory FeedListState.error(String error) = _FeedListState_Error;
+}
+
+@freezed
+abstract class Feed with _$Feed {
+  const factory Feed({
     required String id,
     required DateTime createdAt,
     required String authorId,
@@ -63,7 +70,7 @@ abstract class FeedList with _$FeedList {
     String? ratio,
   }) = _FeedList;
 
-  factory FeedList.fromJson(Map<String, dynamic> json) => _$FeedListFromJson(json);
+  factory Feed.fromJson(Map<String, dynamic> json) => _$FeedFromJson(json);
 }
 
 @freezed
