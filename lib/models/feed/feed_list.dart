@@ -15,31 +15,32 @@ String feedListToJson(List<Feed> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 @freezed
-class FeedListState with _$FeedListState{
-  const factory FeedListState.loading() = _FeedListState_Loading;
-  const factory FeedListState.data({required  List<Feed> feedList }) = _FeedListState_Data;
-  const factory FeedListState.error(String error) = _FeedListState_Error;
+class FeedUiState with _$FeedUiState {
+  const factory FeedUiState.loading() = _FeedUiState_Loading;
+  const factory FeedUiState.data({required List<Feed> feedList}) = _FeedUiState_Data;
+  const factory FeedUiState.error(String error) = _FeedUiState_Error;
 }
 
 @freezed
 abstract class Feed with _$Feed {
+  @JsonSerializable(explicitToJson: true)
   const factory Feed({
     required String id,
     required DateTime createdAt,
     required String authorId,
     required String placeId,
     required String description,
-    required String defaultPhotoUrl,
+    String? defaultPhotoUrl,
+    List<AuthorPhotosResolutions>? photosResolutions,
+    List<Tags>? feedListTags,
     required AuthorPhotosResolutions defaultPhotoResolutions,
     required List<String> photoUrls,
     required PlaceLocation placeLocation,
-    required List<AuthorPhotosResolutions> photosResolutions,
     required AuthorPhotosResolutions authorPhotosResolutions,
     required List<Like> likes,
-    required List<String> comments,
+    required List<dynamic> comments,
     required List<String> categories,
     required Address address,
-    required List<Tags> feedListTags,
     required List<Tags> userTags,
     required bool authorVerified,
     required List<Tags> tags,
@@ -75,6 +76,7 @@ abstract class Feed with _$Feed {
 
 @freezed
 abstract class Address with _$Address {
+  @JsonSerializable(explicitToJson: true)
   const factory Address({
     String? line1,
     String? area,
@@ -90,6 +92,7 @@ abstract class Address with _$Address {
 
 @freezed
 abstract class AuthorPhotosResolutions with _$AuthorPhotosResolutions {
+  @JsonSerializable(explicitToJson: true)
   const factory AuthorPhotosResolutions({
     String? original,
     String? large,
@@ -106,9 +109,10 @@ abstract class AuthorPhotosResolutions with _$AuthorPhotosResolutions {
 
 @freezed
 abstract class Tags with _$Tags {
+  @JsonSerializable(explicitToJson: true)
   const factory Tags({
-    required int id,
-    required String name,
+     String? id,
+     String? name,
   }) = _Tags;
 
   factory Tags.fromJson(Map<String, dynamic> json) => _$TagsFromJson(json);
@@ -116,6 +120,7 @@ abstract class Tags with _$Tags {
 
 @freezed
 abstract class Like with _$Like {
+  @JsonSerializable(explicitToJson: true)
   const factory Like({
     String? userId,
     String? entityId,
@@ -132,6 +137,7 @@ abstract class Like with _$Like {
 
 @freezed
 abstract class PlaceLocation with _$PlaceLocation {
+  @JsonSerializable(explicitToJson: true)
   const factory PlaceLocation({
     required double latitude,
     required double longitude,

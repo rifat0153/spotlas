@@ -12,31 +12,30 @@ _$_FeedList _$$_FeedListFromJson(Map<String, dynamic> json) => _$_FeedList(
       authorId: json['authorId'] as String,
       placeId: json['placeId'] as String,
       description: json['description'] as String,
-      defaultPhotoUrl: json['defaultPhotoUrl'] as String,
+      defaultPhotoUrl: json['defaultPhotoUrl'] as String?,
+      photosResolutions: (json['photosResolutions'] as List<dynamic>?)
+          ?.map((e) =>
+              AuthorPhotosResolutions.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      feedListTags: (json['feedListTags'] as List<dynamic>?)
+          ?.map((e) => Tags.fromJson(e as Map<String, dynamic>))
+          .toList(),
       defaultPhotoResolutions: AuthorPhotosResolutions.fromJson(
           json['defaultPhotoResolutions'] as Map<String, dynamic>),
       photoUrls:
           (json['photoUrls'] as List<dynamic>).map((e) => e as String).toList(),
       placeLocation:
           PlaceLocation.fromJson(json['placeLocation'] as Map<String, dynamic>),
-      photosResolutions: (json['photosResolutions'] as List<dynamic>)
-          .map((e) =>
-              AuthorPhotosResolutions.fromJson(e as Map<String, dynamic>))
-          .toList(),
       authorPhotosResolutions: AuthorPhotosResolutions.fromJson(
           json['authorPhotosResolutions'] as Map<String, dynamic>),
       likes: (json['likes'] as List<dynamic>)
           .map((e) => Like.fromJson(e as Map<String, dynamic>))
           .toList(),
-      comments:
-          (json['comments'] as List<dynamic>).map((e) => e as String).toList(),
+      comments: json['comments'] as List<dynamic>,
       categories: (json['categories'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
       address: Address.fromJson(json['address'] as Map<String, dynamic>),
-      feedListTags: (json['feedListTags'] as List<dynamic>)
-          .map((e) => Tags.fromJson(e as Map<String, dynamic>))
-          .toList(),
       userTags: (json['userTags'] as List<dynamic>)
           .map((e) => Tags.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -79,19 +78,20 @@ Map<String, dynamic> _$$_FeedListToJson(_$_FeedList instance) =>
       'placeId': instance.placeId,
       'description': instance.description,
       'defaultPhotoUrl': instance.defaultPhotoUrl,
-      'defaultPhotoResolutions': instance.defaultPhotoResolutions,
+      'photosResolutions':
+          instance.photosResolutions?.map((e) => e.toJson()).toList(),
+      'feedListTags': instance.feedListTags?.map((e) => e.toJson()).toList(),
+      'defaultPhotoResolutions': instance.defaultPhotoResolutions.toJson(),
       'photoUrls': instance.photoUrls,
-      'placeLocation': instance.placeLocation,
-      'photosResolutions': instance.photosResolutions,
-      'authorPhotosResolutions': instance.authorPhotosResolutions,
-      'likes': instance.likes,
+      'placeLocation': instance.placeLocation.toJson(),
+      'authorPhotosResolutions': instance.authorPhotosResolutions.toJson(),
+      'likes': instance.likes.map((e) => e.toJson()).toList(),
       'comments': instance.comments,
       'categories': instance.categories,
-      'address': instance.address,
-      'feedListTags': instance.feedListTags,
-      'userTags': instance.userTags,
+      'address': instance.address.toJson(),
+      'userTags': instance.userTags.map((e) => e.toJson()).toList(),
       'authorVerified': instance.authorVerified,
-      'tags': instance.tags,
+      'tags': instance.tags.map((e) => e.toJson()).toList(),
       'placeholderLogo': instance.placeholderLogo,
       'authorUsername': instance.authorUsername,
       'authorFullName': instance.authorFullName,
@@ -165,8 +165,8 @@ Map<String, dynamic> _$$_AuthorPhotosResolutionsToJson(
     };
 
 _$_Tags _$$_TagsFromJson(Map<String, dynamic> json) => _$_Tags(
-      id: json['id'] as int,
-      name: json['name'] as String,
+      id: json['id'] as String?,
+      name: json['name'] as String?,
     );
 
 Map<String, dynamic> _$$_TagsToJson(_$_Tags instance) => <String, dynamic>{
@@ -194,7 +194,7 @@ Map<String, dynamic> _$$_LikeToJson(_$_Like instance) => <String, dynamic>{
       'photoUrl': instance.photoUrl,
       'firstName': instance.firstName,
       'lastName': instance.lastName,
-      'photoResolutions': instance.photoResolutions,
+      'photoResolutions': instance.photoResolutions.toJson(),
     };
 
 _$_PlaceLocation _$$_PlaceLocationFromJson(Map<String, dynamic> json) =>

@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:spotlas/config/constants.dart';
-import 'package:spotlas/models/exception/network_exceptions.dart';
 import 'package:spotlas/models/feed/feed_list.dart';
+import 'package:http/http.dart' as http;
 
 abstract class IFeedService {
   Future<List<Feed>> getFeedList({
@@ -11,11 +10,7 @@ abstract class IFeedService {
   });
 }
 
-class NewsService implements IFeedService {
-  final Dio _dio;
-
-  NewsService(this._dio);
-
+class FeedService implements IFeedService {
   @override
   Future<List<Feed>> getFeedList({
     double lat = 5,
@@ -23,18 +18,13 @@ class NewsService implements IFeedService {
     int page = 1,
   }) async {
     try {
-      final Response response = await _dio.get(
-        Constants.baseUrl + 'home/reel',
-        queryParameters: {
-          'lat': lat,
-          'lng': lng,
-          'page': page,
+      final http.Response response = await http.get(
+        Uri.parse('http://161.35.162.216:1210/interview/home/reel'),
+        headers: {
+          'method': 'get',
         },
       );
-
-      final List<Feed> feedList = feedListFromJson(response.toString());
-
-      print('feedService' + feedList.toString());
+      final List<Feed> feedList = feedListFromJson(response.body.toString());
 
       return feedList;
     } on Exception catch (_) {
