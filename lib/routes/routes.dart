@@ -7,10 +7,10 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
     settings: routeSettings,
     builder: (BuildContext context) {
       switch (routeSettings.name) {
-        // case '/':
-        //   return const FeedView();
         case '/':
-          return const HomeView();
+          return const FeedView();
+        // case '/':
+        //   return const HomeView();
 
         // case NewsByCategoryListView.routeName:
         //   final arguments = routeSettings.arguments as NewsCategoryListViewArguments;
