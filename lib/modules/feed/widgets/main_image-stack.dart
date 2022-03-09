@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spotlas/config/constants.dart';
 import 'package:spotlas/models/feed/feed_list.dart';
 
 class MainImageStack extends StatelessWidget {
@@ -17,7 +18,13 @@ class MainImageStack extends StatelessWidget {
             fit: BoxFit.cover,
             height: double.infinity,
           ),
-        Text(feed.id),
+        Text(
+          feed.id,
+          style: TextStyle(
+            fontFamily: FontName.sfPro,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ],
     );
   }

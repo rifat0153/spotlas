@@ -14,7 +14,7 @@ class FeedView extends ConsumerWidget {
     return Scaffold(
       body: SafeArea(
           child: feedState.when(
-              loading: () => const CircularProgressIndicator.adaptive(),
+              loading: () => const Center(child: CircularProgressIndicator.adaptive()),
               data: (feeds) => ListView.builder(
                   itemCount: feeds.length,
                   itemBuilder: (_, i) {
@@ -43,7 +43,6 @@ class _FeedItemState extends ConsumerState<FeedItem> {
         aspectRatio: 0.8,
         child: Container(
           height: 0,
-          color: Colors.amber,
           child: MainImageStack(feed: widget.feed),
         ),
       ),
