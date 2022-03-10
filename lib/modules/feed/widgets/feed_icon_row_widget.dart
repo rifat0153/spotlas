@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:spotlas/config/constants.dart';
 import 'package:spotlas/config/size_config.dart';
 import 'package:spotlas/models/feed/feed_list.dart';
-import 'package:spotlas/modules/feed/feed_providers.dart';
 import 'package:spotlas/modules/feed/widgets/feed_like_button.dart';
 
 class FeedIconsRowWidget extends ConsumerWidget {
@@ -39,7 +39,9 @@ class FeedIconsRowWidget extends ConsumerWidget {
           ),
           FeedLikeButton(feed: feed),
           GestureDetector(
-            onTap: () {},
+            onTap: () async {
+              await Share.share(feed.description, subject: feed.authorFullName);
+            },
             child: SvgPicture.asset(
               MyAsssets.paperPlaneBorderIcon,
               height: 24,
@@ -51,4 +53,3 @@ class FeedIconsRowWidget extends ConsumerWidget {
     );
   }
 }
-
