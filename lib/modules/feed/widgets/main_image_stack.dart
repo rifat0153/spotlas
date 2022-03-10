@@ -15,26 +15,29 @@ class MainImageStack extends StatelessWidget {
   Widget build(BuildContext context) {
     final padding = SizeConfig.getPaddingValues(context);
 
-    return Stack(
-      children: [
-        if (feed.photoUrls.first.isNotEmpty)
-          Image.network(
-            feed.photoUrls.first,
-            errorBuilder: (_, __, ___) => Container(color: Colors.grey),
-            fit: BoxFit.cover,
-            height: double.infinity,
-          ),
-        Padding(
-          padding: EdgeInsets.fromLTRB(padding.s, padding.s, padding.l, padding.s),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              UserInfoTopRow(feed: feed),
-              InfoBottomRow(feed: feed),
-            ],
-          ),
-        )
-      ],
+    return AspectRatio(
+      aspectRatio: 0.8,
+      child: Stack(
+        children: [
+          if (feed.photoUrls.first.isNotEmpty)
+            Image.network(
+              feed.photoUrls.first,
+              errorBuilder: (_, __, ___) => Container(color: Colors.grey),
+              fit: BoxFit.cover,
+              height: double.infinity,
+            ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(padding.s, padding.s, padding.l, padding.s),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                UserInfoTopRow(feed: feed),
+                InfoBottomRow(feed: feed),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

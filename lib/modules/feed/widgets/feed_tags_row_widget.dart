@@ -15,6 +15,10 @@ class FeedTagsRowWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final padding = SizeConfig.getPaddingValues(context);
 
+    if (feed.tags_.isEmpty) {
+      return const SizedBox();
+    }
+
     return Padding(
       padding: EdgeInsets.fromLTRB(padding.s, 0, 0, padding.s),
       child: SingleChildScrollView(
