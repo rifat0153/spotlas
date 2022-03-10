@@ -2,12 +2,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:spotlas/config/hive_constants.dart';
 
-class FeedLikedNotifier extends StateNotifier<List<String>> {
-  FeedLikedNotifier({required this.reader}) : super([]);
+class FeedFavoriteNotifier extends StateNotifier<List<String>> {
+  FeedFavoriteNotifier({required this.reader}) : super([]);
 
   final Ref reader;
 
-  void retriveLikedFeeds() {
+  void retriveFavoriteFeeds() {
     final List<String> existingFavoriteFeeds = Hive.box(HiveBoxes.userSettings).get(
       HiveKeys.favoriteList,
       defaultValue: <String>[],
@@ -16,7 +16,7 @@ class FeedLikedNotifier extends StateNotifier<List<String>> {
     state = existingFavoriteFeeds;
   }
 
-  bool isFeedItemLiked(String feedId) {
+  bool isFeedItemFavorite(String feedId) {
     final List<String> existingFavoriteFeeds =
         Hive.box(HiveBoxes.userSettings).get(HiveKeys.favoriteList, defaultValue: <String>[]);
 
@@ -25,18 +25,18 @@ class FeedLikedNotifier extends StateNotifier<List<String>> {
     return false;
   }
 
-  void toggleIsLiked(String feedId) {
-    final isLiked = isFeedItemLiked(feedId);
+  void toggleIsFavorite(String feedId) {
+    final isLiked = isFeedItemFavorite(feedId);
 
     if (isLiked) {
       removeFromLikedList(feedId);
       return;
     }
 
-    addToLikedList(feedId);
+    addToFavoriteList(feedId);
   }
 
-  bool addToLikedList(String feedId) {
+  bool addToFavoriteList(String feedId) {
     final List<String> existingFavoriteFeeds = Hive.box(HiveBoxes.userSettings).get(
       HiveKeys.favoriteList,
       defaultValue: <String>[],

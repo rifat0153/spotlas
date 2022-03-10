@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotlas/config/constants.dart';
 import 'package:spotlas/config/size_config.dart';
 import 'package:spotlas/models/feed/feed_list.dart';
+import 'package:spotlas/modules/feed/widgets/feed_favorite_button.dart';
 import 'package:spotlas/shared/widgets/my_text.dart';
 
 class MainImageStack extends StatelessWidget {
@@ -175,12 +176,7 @@ class InfoBottomRow extends StatelessWidget {
           ),
         ),
         SizedBox(width: padding.s),
-        SvgPicture.asset(
-          MyAsssets.starBorderIcon,
-          height: 24.8,
-          width: 24,
-          color: Colors.white,
-        ),
+        FeedFavoriteButton(feed: feed),
       ],
     );
   }

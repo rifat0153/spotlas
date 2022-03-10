@@ -49,7 +49,7 @@ class _FeedItemState extends ConsumerState<FeedItem> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         MainImageStack(feed: widget.feed),
-         FeedIconsRowWidget(feed: widget.feed),
+        FeedIconsRowWidget(feed: widget.feed),
         FeedDescriptionWidget(feed: widget.feed),
         FeedTagsRowWidget(feed: widget.feed),
         FeedTimeWidget(padding: padding, widget: widget),
