@@ -20,13 +20,7 @@ class MainImageStack extends StatelessWidget {
       aspectRatio: 0.8,
       child: Stack(
         children: [
-          if (feed.photoUrls.first.isNotEmpty)
-            Image.network(
-              feed.photoUrls.first,
-              errorBuilder: (_, __, ___) => Container(color: Colors.grey),
-              fit: BoxFit.cover,
-              height: double.infinity,
-            ),
+          ImagePageView(feed: feed),
           Padding(
             padding: EdgeInsets.fromLTRB(padding.s, padding.s, padding.l, padding.s),
             child: Column(
@@ -39,6 +33,54 @@ class MainImageStack extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class ImagePageView extends StatefulWidget {
+  const ImagePageView({
+    Key? key,
+    required this.feed,
+  }) : super(key: key);
+
+  final Feed feed;
+
+  @override
+  State<ImagePageView> createState() => _ImagePageViewState();
+}
+
+class _ImagePageViewState extends State<ImagePageView> {
+  late final PageController controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller = PageController();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PageView(
+      controller: controller,
+      children: [
+        ...widget.feed.photoUrls
+            .map(
+              (photoUrl) => Image.network(
+                photoUrl,
+                errorBuilder: (_, __, ___) => Container(color: Colors.grey),
+                fit: BoxFit.cover,
+                height: double.infinity,
+              ),
+            )
+            .toList()
+      ],
     );
   }
 }
