@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:spotlas/config/hive_constants.dart';
 import 'package:spotlas/routes/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
+
+  await Hive.openBox(HiveBoxes.userSettings);
+
+  // await Hive.box(HiveBoxes.userSettings).clear();
 
   runApp(
     const ProviderScope(child: MyApp()),
