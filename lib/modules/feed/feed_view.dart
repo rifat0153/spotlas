@@ -7,6 +7,7 @@ import 'package:spotlas/modules/feed/feed_providers.dart';
 import 'package:spotlas/modules/feed/widgets/feed_description_widget.dart';
 import 'package:spotlas/modules/feed/widgets/feed_icon_row_widget.dart';
 import 'package:spotlas/modules/feed/widgets/feed_tags_row_widget.dart';
+import 'package:spotlas/modules/feed/widgets/feed_time_widget.dart';
 import 'package:spotlas/modules/feed/widgets/main_image_stack.dart';
 import 'package:spotlas/shared/helpers/date_helper.dart';
 import 'package:spotlas/shared/widgets/my_text.dart';
@@ -106,8 +107,6 @@ class _FeedViewState extends ConsumerState<FeedView> {
               onLoading: () async {
                 final isSuccess = await getFeedList(false);
 
-                print('Laoding called');
-
                 if (isSuccess) {
                   refreshController.loadComplete();
                 } else {
@@ -145,32 +144,8 @@ class _FeedItemState extends ConsumerState<FeedItem> {
         FeedIconsRowWidget(feed: widget.feed),
         FeedDescriptionWidget(feed: widget.feed),
         FeedTagsRowWidget(feed: widget.feed),
-        FeedTimeWidget(padding: padding, widget: widget),
+        FeedTimeWidget(feed: widget.feed),
       ],
-    );
-  }
-}
-
-class FeedTimeWidget extends StatelessWidget {
-  const FeedTimeWidget({
-    Key? key,
-    required this.padding,
-    required this.widget,
-  }) : super(key: key);
-
-  final MyPadding padding;
-  final FeedItem widget;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(padding.s, 0, padding.s, padding.l),
-      child: MyText(
-        text: DateHelper.getTimeDifference(widget.feed.createdAt),
-        color: const Color(0XFFE8E8F0),
-        fontSize: 15,
-        height: 1.33,
-      ),
     );
   }
 }
