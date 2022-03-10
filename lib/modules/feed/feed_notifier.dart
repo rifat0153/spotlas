@@ -30,6 +30,7 @@ class FeedNotifier extends StateNotifier<List<Feed>> {
     try {
       final feeds = await service.getFeedList(lat: lat, lng: lng, page: page);
       print('Notifier: ' + feeds.length.toString());
+      print('Notifier: Page ' + page.toString());
 
       page++;
 
@@ -39,7 +40,7 @@ class FeedNotifier extends StateNotifier<List<Feed>> {
         state = [...state, ...feeds];
       }
 
-      if (feeds.length <= 20) allFetched = true;
+      if (feeds.length < 20) allFetched = true;
 
       return true;
     } catch (e) {

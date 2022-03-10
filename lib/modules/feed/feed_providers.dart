@@ -7,7 +7,7 @@ import 'package:spotlas/modules/feed/widgets/feed_favorite_notifier.dart';
 import 'package:spotlas/modules/feed/widgets/feed_liked_notifier.dart';
 
 final feedsNotifierProvider = StateNotifierProvider<FeedNotifier, List<Feed>>((ref) {
-  return FeedNotifier(reader: ref, service: ref.read(feedServiceProvider))..retriveFeeds();
+  return FeedNotifier(reader: ref, service: ref.read(feedServiceProvider));
 });
 
 final feedErrorProvider = StateProvider<String?>((ref) {
