@@ -23,6 +23,8 @@ class _FeedDescriptionWidgetState extends State<FeedDescriptionWidget> {
 
     if (widget.feed.description.length > 130) {
       description1stHalf = widget.feed.description.substring(0, 130);
+    } else {
+      description1stHalf = widget.feed.description;
     }
   }
 
@@ -33,7 +35,7 @@ class _FeedDescriptionWidgetState extends State<FeedDescriptionWidget> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          showMore = !showMore;
+          if (description1stHalf != widget.feed.description) showMore = !showMore;
         });
       },
       child: Padding(
@@ -63,7 +65,11 @@ class _FeedDescriptionWidgetState extends State<FeedDescriptionWidget> {
                 ),
               ),
               TextSpan(
-                text: showMore ? ' .. less' : '  more...',
+                text: showMore
+                    ? ' .. less'
+                    : description1stHalf.length < 130
+                        ? ''
+                        : '  more...',
                 style: const TextStyle(
                   color: Color(0XFFC8C8D4),
                   fontFamily: FontName.sfPro,

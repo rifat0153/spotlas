@@ -135,8 +135,6 @@ class FeedItem extends ConsumerStatefulWidget {
 class _FeedItemState extends ConsumerState<FeedItem> {
   @override
   Widget build(BuildContext context) {
-    final padding = SizeConfig.getPaddingValues(context);
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
