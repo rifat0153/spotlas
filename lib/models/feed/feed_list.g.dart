@@ -17,8 +17,14 @@ _$_FeedList _$$_FeedListFromJson(Map<String, dynamic> json) => _$_FeedList(
           ?.map((e) =>
               AuthorPhotosResolutions.fromJson(e as Map<String, dynamic>))
           .toList(),
-      feedListTags: (json['feedListTags'] as List<dynamic>?)
+      tags: (json['tags'] as List<dynamic>?)
           ?.map((e) => Tags.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      userTags: (json['userTags'] as List<dynamic>)
+          .map((e) => Tags.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      tags_: (json['tags_'] as List<dynamic>)
+          .map((e) => Tags.fromJson(e as Map<String, dynamic>))
           .toList(),
       defaultPhotoResolutions: AuthorPhotosResolutions.fromJson(
           json['defaultPhotoResolutions'] as Map<String, dynamic>),
@@ -36,13 +42,7 @@ _$_FeedList _$$_FeedListFromJson(Map<String, dynamic> json) => _$_FeedList(
           .map((e) => e as String)
           .toList(),
       address: Address.fromJson(json['address'] as Map<String, dynamic>),
-      userTags: (json['userTags'] as List<dynamic>)
-          .map((e) => Tags.fromJson(e as Map<String, dynamic>))
-          .toList(),
       authorVerified: json['authorVerified'] as bool,
-      tags: (json['tags'] as List<dynamic>)
-          .map((e) => Tags.fromJson(e as Map<String, dynamic>))
-          .toList(),
       placeholderLogo: json['placeholderLogo'] as String?,
       authorUsername: json['authorUsername'] as String?,
       authorFullName: json['authorFullName'] as String?,
@@ -80,7 +80,9 @@ Map<String, dynamic> _$$_FeedListToJson(_$_FeedList instance) =>
       'defaultPhotoUrl': instance.defaultPhotoUrl,
       'photosResolutions':
           instance.photosResolutions?.map((e) => e.toJson()).toList(),
-      'feedListTags': instance.feedListTags?.map((e) => e.toJson()).toList(),
+      'tags': instance.tags?.map((e) => e.toJson()).toList(),
+      'userTags': instance.userTags.map((e) => e.toJson()).toList(),
+      'tags_': instance.tags_.map((e) => e.toJson()).toList(),
       'defaultPhotoResolutions': instance.defaultPhotoResolutions.toJson(),
       'photoUrls': instance.photoUrls,
       'placeLocation': instance.placeLocation.toJson(),
@@ -89,9 +91,7 @@ Map<String, dynamic> _$$_FeedListToJson(_$_FeedList instance) =>
       'comments': instance.comments,
       'categories': instance.categories,
       'address': instance.address.toJson(),
-      'userTags': instance.userTags.map((e) => e.toJson()).toList(),
       'authorVerified': instance.authorVerified,
-      'tags': instance.tags.map((e) => e.toJson()).toList(),
       'placeholderLogo': instance.placeholderLogo,
       'authorUsername': instance.authorUsername,
       'authorFullName': instance.authorFullName,
@@ -165,12 +165,12 @@ Map<String, dynamic> _$$_AuthorPhotosResolutionsToJson(
     };
 
 _$_Tags _$$_TagsFromJson(Map<String, dynamic> json) => _$_Tags(
-      id: json['id'] as String?,
+      id: tagsIdFromJson(json['id']),
       name: json['name'] as String?,
     );
 
 Map<String, dynamic> _$$_TagsToJson(_$_Tags instance) => <String, dynamic>{
-      'id': instance.id,
+      'id': tagsIdToJson(instance.id),
       'name': instance.name,
     };
 

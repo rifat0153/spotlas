@@ -32,7 +32,9 @@ abstract class Feed with _$Feed {
     required String description,
     String? defaultPhotoUrl,
     List<AuthorPhotosResolutions>? photosResolutions,
-    List<Tags>? feedListTags,
+    List<Tags>? tags,
+    required List<Tags> userTags,
+    required List<Tags> tags_,
     required AuthorPhotosResolutions defaultPhotoResolutions,
     required List<String> photoUrls,
     required PlaceLocation placeLocation,
@@ -41,9 +43,7 @@ abstract class Feed with _$Feed {
     required List<dynamic> comments,
     required List<String> categories,
     required Address address,
-    required List<Tags> userTags,
     required bool authorVerified,
-    required List<Tags> tags,
     String? placeholderLogo,
     String? authorUsername,
     String? authorFullName,
@@ -108,14 +108,20 @@ abstract class AuthorPhotosResolutions with _$AuthorPhotosResolutions {
 }
 
 @freezed
-abstract class Tags with _$Tags {
+class Tags with _$Tags {
   @JsonSerializable(explicitToJson: true)
   const factory Tags({
-     String? id,
-     String? name,
+    @JsonKey(toJson: tagsIdToJson, fromJson: tagsIdFromJson) String? id,
+    String? name,
   }) = _Tags;
 
   factory Tags.fromJson(Map<String, dynamic> json) => _$TagsFromJson(json);
+}
+
+tagsIdToJson(dynamic json) {}
+
+String tagsIdFromJson(dynamic json) {
+  return json.toString();
 }
 
 @freezed

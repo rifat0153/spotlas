@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:spotlas/models/feed/feed_list.dart';
 import 'package:http/http.dart' as http;

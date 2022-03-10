@@ -510,7 +510,9 @@ class _$FeedTearOff {
       required String description,
       String? defaultPhotoUrl,
       List<AuthorPhotosResolutions>? photosResolutions,
-      List<Tags>? feedListTags,
+      List<Tags>? tags,
+      required List<Tags> userTags,
+      required List<Tags> tags_,
       required AuthorPhotosResolutions defaultPhotoResolutions,
       required List<String> photoUrls,
       required PlaceLocation placeLocation,
@@ -519,9 +521,7 @@ class _$FeedTearOff {
       required List<dynamic> comments,
       required List<String> categories,
       required Address address,
-      required List<Tags> userTags,
       required bool authorVerified,
-      required List<Tags> tags,
       String? placeholderLogo,
       String? authorUsername,
       String? authorFullName,
@@ -555,7 +555,9 @@ class _$FeedTearOff {
       description: description,
       defaultPhotoUrl: defaultPhotoUrl,
       photosResolutions: photosResolutions,
-      feedListTags: feedListTags,
+      tags: tags,
+      userTags: userTags,
+      tags_: tags_,
       defaultPhotoResolutions: defaultPhotoResolutions,
       photoUrls: photoUrls,
       placeLocation: placeLocation,
@@ -564,9 +566,7 @@ class _$FeedTearOff {
       comments: comments,
       categories: categories,
       address: address,
-      userTags: userTags,
       authorVerified: authorVerified,
-      tags: tags,
       placeholderLogo: placeholderLogo,
       authorUsername: authorUsername,
       authorFullName: authorFullName,
@@ -613,7 +613,9 @@ mixin _$Feed {
   String? get defaultPhotoUrl => throw _privateConstructorUsedError;
   List<AuthorPhotosResolutions>? get photosResolutions =>
       throw _privateConstructorUsedError;
-  List<Tags>? get feedListTags => throw _privateConstructorUsedError;
+  List<Tags>? get tags => throw _privateConstructorUsedError;
+  List<Tags> get userTags => throw _privateConstructorUsedError;
+  List<Tags> get tags_ => throw _privateConstructorUsedError;
   AuthorPhotosResolutions get defaultPhotoResolutions =>
       throw _privateConstructorUsedError;
   List<String> get photoUrls => throw _privateConstructorUsedError;
@@ -624,9 +626,7 @@ mixin _$Feed {
   List<dynamic> get comments => throw _privateConstructorUsedError;
   List<String> get categories => throw _privateConstructorUsedError;
   Address get address => throw _privateConstructorUsedError;
-  List<Tags> get userTags => throw _privateConstructorUsedError;
   bool get authorVerified => throw _privateConstructorUsedError;
-  List<Tags> get tags => throw _privateConstructorUsedError;
   String? get placeholderLogo => throw _privateConstructorUsedError;
   String? get authorUsername => throw _privateConstructorUsedError;
   String? get authorFullName => throw _privateConstructorUsedError;
@@ -670,7 +670,9 @@ abstract class $FeedCopyWith<$Res> {
       String description,
       String? defaultPhotoUrl,
       List<AuthorPhotosResolutions>? photosResolutions,
-      List<Tags>? feedListTags,
+      List<Tags>? tags,
+      List<Tags> userTags,
+      List<Tags> tags_,
       AuthorPhotosResolutions defaultPhotoResolutions,
       List<String> photoUrls,
       PlaceLocation placeLocation,
@@ -679,9 +681,7 @@ abstract class $FeedCopyWith<$Res> {
       List<dynamic> comments,
       List<String> categories,
       Address address,
-      List<Tags> userTags,
       bool authorVerified,
-      List<Tags> tags,
       String? placeholderLogo,
       String? authorUsername,
       String? authorFullName,
@@ -731,7 +731,9 @@ class _$FeedCopyWithImpl<$Res> implements $FeedCopyWith<$Res> {
     Object? description = freezed,
     Object? defaultPhotoUrl = freezed,
     Object? photosResolutions = freezed,
-    Object? feedListTags = freezed,
+    Object? tags = freezed,
+    Object? userTags = freezed,
+    Object? tags_ = freezed,
     Object? defaultPhotoResolutions = freezed,
     Object? photoUrls = freezed,
     Object? placeLocation = freezed,
@@ -740,9 +742,7 @@ class _$FeedCopyWithImpl<$Res> implements $FeedCopyWith<$Res> {
     Object? comments = freezed,
     Object? categories = freezed,
     Object? address = freezed,
-    Object? userTags = freezed,
     Object? authorVerified = freezed,
-    Object? tags = freezed,
     Object? placeholderLogo = freezed,
     Object? authorUsername = freezed,
     Object? authorFullName = freezed,
@@ -798,10 +798,18 @@ class _$FeedCopyWithImpl<$Res> implements $FeedCopyWith<$Res> {
           ? _value.photosResolutions
           : photosResolutions // ignore: cast_nullable_to_non_nullable
               as List<AuthorPhotosResolutions>?,
-      feedListTags: feedListTags == freezed
-          ? _value.feedListTags
-          : feedListTags // ignore: cast_nullable_to_non_nullable
+      tags: tags == freezed
+          ? _value.tags
+          : tags // ignore: cast_nullable_to_non_nullable
               as List<Tags>?,
+      userTags: userTags == freezed
+          ? _value.userTags
+          : userTags // ignore: cast_nullable_to_non_nullable
+              as List<Tags>,
+      tags_: tags_ == freezed
+          ? _value.tags_
+          : tags_ // ignore: cast_nullable_to_non_nullable
+              as List<Tags>,
       defaultPhotoResolutions: defaultPhotoResolutions == freezed
           ? _value.defaultPhotoResolutions
           : defaultPhotoResolutions // ignore: cast_nullable_to_non_nullable
@@ -834,18 +842,10 @@ class _$FeedCopyWithImpl<$Res> implements $FeedCopyWith<$Res> {
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Address,
-      userTags: userTags == freezed
-          ? _value.userTags
-          : userTags // ignore: cast_nullable_to_non_nullable
-              as List<Tags>,
       authorVerified: authorVerified == freezed
           ? _value.authorVerified
           : authorVerified // ignore: cast_nullable_to_non_nullable
               as bool,
-      tags: tags == freezed
-          ? _value.tags
-          : tags // ignore: cast_nullable_to_non_nullable
-              as List<Tags>,
       placeholderLogo: placeholderLogo == freezed
           ? _value.placeholderLogo
           : placeholderLogo // ignore: cast_nullable_to_non_nullable
@@ -993,7 +993,9 @@ abstract class _$FeedListCopyWith<$Res> implements $FeedCopyWith<$Res> {
       String description,
       String? defaultPhotoUrl,
       List<AuthorPhotosResolutions>? photosResolutions,
-      List<Tags>? feedListTags,
+      List<Tags>? tags,
+      List<Tags> userTags,
+      List<Tags> tags_,
       AuthorPhotosResolutions defaultPhotoResolutions,
       List<String> photoUrls,
       PlaceLocation placeLocation,
@@ -1002,9 +1004,7 @@ abstract class _$FeedListCopyWith<$Res> implements $FeedCopyWith<$Res> {
       List<dynamic> comments,
       List<String> categories,
       Address address,
-      List<Tags> userTags,
       bool authorVerified,
-      List<Tags> tags,
       String? placeholderLogo,
       String? authorUsername,
       String? authorFullName,
@@ -1059,7 +1059,9 @@ class __$FeedListCopyWithImpl<$Res> extends _$FeedCopyWithImpl<$Res>
     Object? description = freezed,
     Object? defaultPhotoUrl = freezed,
     Object? photosResolutions = freezed,
-    Object? feedListTags = freezed,
+    Object? tags = freezed,
+    Object? userTags = freezed,
+    Object? tags_ = freezed,
     Object? defaultPhotoResolutions = freezed,
     Object? photoUrls = freezed,
     Object? placeLocation = freezed,
@@ -1068,9 +1070,7 @@ class __$FeedListCopyWithImpl<$Res> extends _$FeedCopyWithImpl<$Res>
     Object? comments = freezed,
     Object? categories = freezed,
     Object? address = freezed,
-    Object? userTags = freezed,
     Object? authorVerified = freezed,
-    Object? tags = freezed,
     Object? placeholderLogo = freezed,
     Object? authorUsername = freezed,
     Object? authorFullName = freezed,
@@ -1126,10 +1126,18 @@ class __$FeedListCopyWithImpl<$Res> extends _$FeedCopyWithImpl<$Res>
           ? _value.photosResolutions
           : photosResolutions // ignore: cast_nullable_to_non_nullable
               as List<AuthorPhotosResolutions>?,
-      feedListTags: feedListTags == freezed
-          ? _value.feedListTags
-          : feedListTags // ignore: cast_nullable_to_non_nullable
+      tags: tags == freezed
+          ? _value.tags
+          : tags // ignore: cast_nullable_to_non_nullable
               as List<Tags>?,
+      userTags: userTags == freezed
+          ? _value.userTags
+          : userTags // ignore: cast_nullable_to_non_nullable
+              as List<Tags>,
+      tags_: tags_ == freezed
+          ? _value.tags_
+          : tags_ // ignore: cast_nullable_to_non_nullable
+              as List<Tags>,
       defaultPhotoResolutions: defaultPhotoResolutions == freezed
           ? _value.defaultPhotoResolutions
           : defaultPhotoResolutions // ignore: cast_nullable_to_non_nullable
@@ -1162,18 +1170,10 @@ class __$FeedListCopyWithImpl<$Res> extends _$FeedCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Address,
-      userTags: userTags == freezed
-          ? _value.userTags
-          : userTags // ignore: cast_nullable_to_non_nullable
-              as List<Tags>,
       authorVerified: authorVerified == freezed
           ? _value.authorVerified
           : authorVerified // ignore: cast_nullable_to_non_nullable
               as bool,
-      tags: tags == freezed
-          ? _value.tags
-          : tags // ignore: cast_nullable_to_non_nullable
-              as List<Tags>,
       placeholderLogo: placeholderLogo == freezed
           ? _value.placeholderLogo
           : placeholderLogo // ignore: cast_nullable_to_non_nullable
@@ -1290,7 +1290,9 @@ class _$_FeedList implements _FeedList {
       required this.description,
       this.defaultPhotoUrl,
       this.photosResolutions,
-      this.feedListTags,
+      this.tags,
+      required this.userTags,
+      required this.tags_,
       required this.defaultPhotoResolutions,
       required this.photoUrls,
       required this.placeLocation,
@@ -1299,9 +1301,7 @@ class _$_FeedList implements _FeedList {
       required this.comments,
       required this.categories,
       required this.address,
-      required this.userTags,
       required this.authorVerified,
-      required this.tags,
       this.placeholderLogo,
       this.authorUsername,
       this.authorFullName,
@@ -1346,7 +1346,11 @@ class _$_FeedList implements _FeedList {
   @override
   final List<AuthorPhotosResolutions>? photosResolutions;
   @override
-  final List<Tags>? feedListTags;
+  final List<Tags>? tags;
+  @override
+  final List<Tags> userTags;
+  @override
+  final List<Tags> tags_;
   @override
   final AuthorPhotosResolutions defaultPhotoResolutions;
   @override
@@ -1364,11 +1368,7 @@ class _$_FeedList implements _FeedList {
   @override
   final Address address;
   @override
-  final List<Tags> userTags;
-  @override
   final bool authorVerified;
-  @override
-  final List<Tags> tags;
   @override
   final String? placeholderLogo;
   @override
@@ -1422,7 +1422,7 @@ class _$_FeedList implements _FeedList {
 
   @override
   String toString() {
-    return 'Feed(id: $id, createdAt: $createdAt, authorId: $authorId, placeId: $placeId, description: $description, defaultPhotoUrl: $defaultPhotoUrl, photosResolutions: $photosResolutions, feedListTags: $feedListTags, defaultPhotoResolutions: $defaultPhotoResolutions, photoUrls: $photoUrls, placeLocation: $placeLocation, authorPhotosResolutions: $authorPhotosResolutions, likes: $likes, comments: $comments, categories: $categories, address: $address, userTags: $userTags, authorVerified: $authorVerified, tags: $tags, placeholderLogo: $placeholderLogo, authorUsername: $authorUsername, authorFullName: $authorFullName, placeName: $placeName, placeLocationName: $placeLocationName, placeLocationNameO: $placeLocationNameO, placePrimaryCategory: $placePrimaryCategory, categoryDisplayName: $categoryDisplayName, placeLogoUrl: $placeLogoUrl, status: $status, distance: $distance, authorPhotoUrl: $authorPhotoUrl, isLiked: $isLiked, isBookmarked: $isBookmarked, isFollowing: $isFollowing, numberOfComments: $numberOfComments, numberOfLikes: $numberOfLikes, numberOfPhotos: $numberOfPhotos, blackBorder: $blackBorder, imageSource: $imageSource, isGoogleSource: $isGoogleSource, dayMode: $dayMode, isRecommendation: $isRecommendation, score: $score, ratio: $ratio)';
+    return 'Feed(id: $id, createdAt: $createdAt, authorId: $authorId, placeId: $placeId, description: $description, defaultPhotoUrl: $defaultPhotoUrl, photosResolutions: $photosResolutions, tags: $tags, userTags: $userTags, tags_: $tags_, defaultPhotoResolutions: $defaultPhotoResolutions, photoUrls: $photoUrls, placeLocation: $placeLocation, authorPhotosResolutions: $authorPhotosResolutions, likes: $likes, comments: $comments, categories: $categories, address: $address, authorVerified: $authorVerified, placeholderLogo: $placeholderLogo, authorUsername: $authorUsername, authorFullName: $authorFullName, placeName: $placeName, placeLocationName: $placeLocationName, placeLocationNameO: $placeLocationNameO, placePrimaryCategory: $placePrimaryCategory, categoryDisplayName: $categoryDisplayName, placeLogoUrl: $placeLogoUrl, status: $status, distance: $distance, authorPhotoUrl: $authorPhotoUrl, isLiked: $isLiked, isBookmarked: $isBookmarked, isFollowing: $isFollowing, numberOfComments: $numberOfComments, numberOfLikes: $numberOfLikes, numberOfPhotos: $numberOfPhotos, blackBorder: $blackBorder, imageSource: $imageSource, isGoogleSource: $isGoogleSource, dayMode: $dayMode, isRecommendation: $isRecommendation, score: $score, ratio: $ratio)';
   }
 
   @override
@@ -1440,8 +1440,9 @@ class _$_FeedList implements _FeedList {
                 .equals(other.defaultPhotoUrl, defaultPhotoUrl) &&
             const DeepCollectionEquality()
                 .equals(other.photosResolutions, photosResolutions) &&
-            const DeepCollectionEquality()
-                .equals(other.feedListTags, feedListTags) &&
+            const DeepCollectionEquality().equals(other.tags, tags) &&
+            const DeepCollectionEquality().equals(other.userTags, userTags) &&
+            const DeepCollectionEquality().equals(other.tags_, tags_) &&
             const DeepCollectionEquality().equals(
                 other.defaultPhotoResolutions, defaultPhotoResolutions) &&
             const DeepCollectionEquality().equals(other.photoUrls, photoUrls) &&
@@ -1454,10 +1455,8 @@ class _$_FeedList implements _FeedList {
             const DeepCollectionEquality()
                 .equals(other.categories, categories) &&
             const DeepCollectionEquality().equals(other.address, address) &&
-            const DeepCollectionEquality().equals(other.userTags, userTags) &&
             const DeepCollectionEquality()
                 .equals(other.authorVerified, authorVerified) &&
-            const DeepCollectionEquality().equals(other.tags, tags) &&
             const DeepCollectionEquality()
                 .equals(other.placeholderLogo, placeholderLogo) &&
             const DeepCollectionEquality()
@@ -1513,7 +1512,9 @@ class _$_FeedList implements _FeedList {
         const DeepCollectionEquality().hash(description),
         const DeepCollectionEquality().hash(defaultPhotoUrl),
         const DeepCollectionEquality().hash(photosResolutions),
-        const DeepCollectionEquality().hash(feedListTags),
+        const DeepCollectionEquality().hash(tags),
+        const DeepCollectionEquality().hash(userTags),
+        const DeepCollectionEquality().hash(tags_),
         const DeepCollectionEquality().hash(defaultPhotoResolutions),
         const DeepCollectionEquality().hash(photoUrls),
         const DeepCollectionEquality().hash(placeLocation),
@@ -1522,9 +1523,7 @@ class _$_FeedList implements _FeedList {
         const DeepCollectionEquality().hash(comments),
         const DeepCollectionEquality().hash(categories),
         const DeepCollectionEquality().hash(address),
-        const DeepCollectionEquality().hash(userTags),
         const DeepCollectionEquality().hash(authorVerified),
-        const DeepCollectionEquality().hash(tags),
         const DeepCollectionEquality().hash(placeholderLogo),
         const DeepCollectionEquality().hash(authorUsername),
         const DeepCollectionEquality().hash(authorFullName),
@@ -1572,7 +1571,9 @@ abstract class _FeedList implements Feed {
       required String description,
       String? defaultPhotoUrl,
       List<AuthorPhotosResolutions>? photosResolutions,
-      List<Tags>? feedListTags,
+      List<Tags>? tags,
+      required List<Tags> userTags,
+      required List<Tags> tags_,
       required AuthorPhotosResolutions defaultPhotoResolutions,
       required List<String> photoUrls,
       required PlaceLocation placeLocation,
@@ -1581,9 +1582,7 @@ abstract class _FeedList implements Feed {
       required List<dynamic> comments,
       required List<String> categories,
       required Address address,
-      required List<Tags> userTags,
       required bool authorVerified,
-      required List<Tags> tags,
       String? placeholderLogo,
       String? authorUsername,
       String? authorFullName,
@@ -1627,7 +1626,11 @@ abstract class _FeedList implements Feed {
   @override
   List<AuthorPhotosResolutions>? get photosResolutions;
   @override
-  List<Tags>? get feedListTags;
+  List<Tags>? get tags;
+  @override
+  List<Tags> get userTags;
+  @override
+  List<Tags> get tags_;
   @override
   AuthorPhotosResolutions get defaultPhotoResolutions;
   @override
@@ -1645,11 +1648,7 @@ abstract class _FeedList implements Feed {
   @override
   Address get address;
   @override
-  List<Tags> get userTags;
-  @override
   bool get authorVerified;
-  @override
-  List<Tags> get tags;
   @override
   String? get placeholderLogo;
   @override
@@ -2299,7 +2298,9 @@ Tags _$TagsFromJson(Map<String, dynamic> json) {
 class _$TagsTearOff {
   const _$TagsTearOff();
 
-  _Tags call({String? id, String? name}) {
+  _Tags call(
+      {@JsonKey(toJson: tagsIdToJson, fromJson: tagsIdFromJson) String? id,
+      String? name}) {
     return _Tags(
       id: id,
       name: name,
@@ -2316,6 +2317,7 @@ const $Tags = _$TagsTearOff();
 
 /// @nodoc
 mixin _$Tags {
+  @JsonKey(toJson: tagsIdToJson, fromJson: tagsIdFromJson)
   String? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
@@ -2328,7 +2330,9 @@ mixin _$Tags {
 abstract class $TagsCopyWith<$Res> {
   factory $TagsCopyWith(Tags value, $Res Function(Tags) then) =
       _$TagsCopyWithImpl<$Res>;
-  $Res call({String? id, String? name});
+  $Res call(
+      {@JsonKey(toJson: tagsIdToJson, fromJson: tagsIdFromJson) String? id,
+      String? name});
 }
 
 /// @nodoc
@@ -2362,7 +2366,9 @@ abstract class _$TagsCopyWith<$Res> implements $TagsCopyWith<$Res> {
   factory _$TagsCopyWith(_Tags value, $Res Function(_Tags) then) =
       __$TagsCopyWithImpl<$Res>;
   @override
-  $Res call({String? id, String? name});
+  $Res call(
+      {@JsonKey(toJson: tagsIdToJson, fromJson: tagsIdFromJson) String? id,
+      String? name});
 }
 
 /// @nodoc
@@ -2396,11 +2402,14 @@ class __$TagsCopyWithImpl<$Res> extends _$TagsCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$_Tags implements _Tags {
-  const _$_Tags({this.id, this.name});
+  const _$_Tags(
+      {@JsonKey(toJson: tagsIdToJson, fromJson: tagsIdFromJson) this.id,
+      this.name});
 
   factory _$_Tags.fromJson(Map<String, dynamic> json) => _$$_TagsFromJson(json);
 
   @override
+  @JsonKey(toJson: tagsIdToJson, fromJson: tagsIdFromJson)
   final String? id;
   @override
   final String? name;
@@ -2437,11 +2446,14 @@ class _$_Tags implements _Tags {
 }
 
 abstract class _Tags implements Tags {
-  const factory _Tags({String? id, String? name}) = _$_Tags;
+  const factory _Tags(
+      {@JsonKey(toJson: tagsIdToJson, fromJson: tagsIdFromJson) String? id,
+      String? name}) = _$_Tags;
 
   factory _Tags.fromJson(Map<String, dynamic> json) = _$_Tags.fromJson;
 
   @override
+  @JsonKey(toJson: tagsIdToJson, fromJson: tagsIdFromJson)
   String? get id;
   @override
   String? get name;
