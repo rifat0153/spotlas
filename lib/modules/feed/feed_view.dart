@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:spotlas/config/constants.dart';
 import 'package:spotlas/config/size_config.dart';
 import 'package:spotlas/models/feed/feed_list.dart';
 import 'package:spotlas/modules/feed/feed_providers.dart';
+import 'package:spotlas/modules/feed/widgets/feed_icon_row_widget.dart';
 import 'package:spotlas/modules/feed/widgets/main_image_stack.dart';
 
 class FeedView extends ConsumerWidget {
@@ -38,6 +38,19 @@ class FeedItem extends ConsumerStatefulWidget {
 }
 
 class _FeedItemState extends ConsumerState<FeedItem> {
+  bool showMore = false;
+
+  String description1stHalf = '';
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.feed.description.length > 70) {
+      description1stHalf = widget.feed.description.substring(0, 70);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final padding = SizeConfig.getPaddingValues(context);
@@ -50,48 +63,90 @@ class _FeedItemState extends ConsumerState<FeedItem> {
             aspectRatio: 0.8,
             child: MainImageStack(feed: widget.feed),
           ),
-          Container(
-            color: Colors.amber,
+          const FeedIconsRowWidget(),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                showMore = !showMore;
+              });
+            },
             child: Padding(
-              padding: EdgeInsets.fromLTRB(padding.xxl, padding.m, padding.xxl, padding.m),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: () {},
-                    child: SvgPicture.asset(
-                      MyAsssets.mapBorderIcon,
-                      height: 24,
-                      width: 24,
-                    ),
+              padding: EdgeInsets.fromLTRB(padding.s, 0, padding.s, padding.xs),
+              child: RichText(
+                maxLines: showMore ? null : 2,
+                text: TextSpan(
+                  text: '${widget.feed.authorUsername} ',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontFamily: FontName.sfPro,
+                    fontSize: 15,
+                    height: 1.33,
+                    fontWeight: FontWeight.bold,
                   ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: SvgPicture.asset(
-                      MyAsssets.speechBubbleBorderIcon,
-                      height: 24,
-                      width: 24,
+                  children: [
+                    TextSpan(
+                      text: showMore ? widget.feed.description : '$description1stHalf',
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontFamily: FontName.sfPro,
+                        fontSize: 15,
+                        height: 1.33,
+                        fontWeight: FontWeight.normal,
+                        overflow: TextOverflow.fade,
+                      ),
                     ),
-                  ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: SvgPicture.asset(
-                      MyAsssets.heartBorderIcon,
-                      height: 28,
-                      width: 28,
+                    TextSpan(
+                      text: showMore ? ' .. less' : '  more...',
+                      style: const TextStyle(
+                        color: Color(0XFFC8C8D4),
+                        fontFamily: FontName.sfPro,
+                        fontSize: 15,
+                        height: 1.33,
+                        fontWeight: FontWeight.normal,
+                      ),
                     ),
-                  ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: SvgPicture.asset(
-                      MyAsssets.paperPlaneBorderIcon,
-                      height: 24,
-                      width: 24,
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
+            // MyText(
+            //   text: widget.feed.authorUsername ?? '',
+            //   color: Colors.black,
+            //   fontWeight: FontWeight.bold,
+            //   fontSize: 15,
+            // ),
+            // MyText(
+            //   text: widget.feed.description,
+            //   color: Colors.black,
+            //   fontWeight: FontWeight.bold,
+            //   fontSize: 15,
+            //   maxLines: showMore ? null : 2,
+            // ),
+            // ReadMoreText(
+            //   widget.feed.description,
+            //   trimMode: TrimMode.Line,
+            //   trimLines: 2,
+            //   trimCollapsedText: 'more',
+            //   trimExpandedText: 'less',
+            //   lessStyle: const TextStyle(
+            //     color: Color(0XFFC8C8D4),
+            //     fontFamily: FontName.sfPro,
+            //     fontSize: 15,
+            //     height: 1.33,
+            //   ),
+            //   moreStyle: const TextStyle(
+            //     color: Color(0XFFC8C8D4),
+            //     fontFamily: FontName.sfPro,
+            //     fontSize: 15,
+            //     height: 1.33,
+            //   ),
+            //   style: const TextStyle(
+            //     color: Colors.black,
+            //     fontFamily: FontName.sfPro,
+            //     fontSize: 15,
+            //     height: 1.33,
+            //   ),
+            // )
           )
         ],
       ),

@@ -30,7 +30,7 @@ class MyText extends StatelessWidget {
     return Text(
       text,
       maxLines: maxLines,
-      overflow: textOverflow,
+      overflow: maxLines != null ? textOverflow : TextOverflow.visible,
       style: TextStyle(
         fontFamily: fontName,
         fontWeight: fontWeight,
