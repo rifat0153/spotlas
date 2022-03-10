@@ -6,9 +6,9 @@ import 'package:http/http.dart' as http;
 
 abstract class IFeedService {
   Future<List<Feed>> getFeedList({
-    double lat = 5,
-    double lng = 0,
-    int page = 1,
+    double lat,
+    double lng,
+    int page,
   });
 }
 

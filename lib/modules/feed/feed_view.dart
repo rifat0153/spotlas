@@ -15,19 +15,18 @@ class FeedView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final feedState = ref.watch(feedsNotifierProvider);
+    final feeds = ref.watch(feedsNotifierProvider);
+
+    print('${feeds.length}');
 
     return Scaffold(
-      body: SafeArea(
-          child: feedState.when(
-              loading: () => const Center(child: CircularProgressIndicator.adaptive()),
-              data: (feeds) => ListView.builder(
-                  itemCount: feeds.length,
-                  itemBuilder: (_, i) {
-                    return FeedItem(feed: feeds[i]);
-                  }),
-              error: (e) => Text(e))),
-    );
+        body: SafeArea(
+      child: ListView.builder(
+          itemCount: feeds.length,
+          itemBuilder: (_, i) {
+            return FeedItem(feed: feeds[i]);
+          }),
+    ));
   }
 }
 
