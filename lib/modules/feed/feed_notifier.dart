@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spotlas/models/exception/network_exceptions.dart';
 import 'package:spotlas/models/feed/feed_list.dart';
@@ -29,8 +28,6 @@ class FeedNotifier extends StateNotifier<List<Feed>> {
 
     try {
       final feeds = await service.getFeedList(lat: lat, lng: lng, page: page);
-      print('Notifier: ' + feeds.length.toString());
-      print('Notifier: Page ' + page.toString());
 
       page++;
 

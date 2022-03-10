@@ -56,8 +56,6 @@ class _FeedViewState extends ConsumerState<FeedView> {
     final feeds = ref.watch(feedsNotifierProvider);
     final feedsNotifier = ref.watch(feedsNotifierProvider.notifier);
 
-    print('${feeds.length}');
-
     ref.listen<String?>(feedErrorProvider, (prev, next) {
       if (next != null) {
         final SnackBar snackBar = SnackBar(
@@ -74,37 +72,54 @@ class _FeedViewState extends ConsumerState<FeedView> {
       }
     });
 
+    final showErrorWidget = feeds.isEmpty && ref.watch(feedErrorProvider.state).state != null;
+
     return Scaffold(
         body: SafeArea(
-      child: SmartRefresher(
-        controller: refreshController,
-        enablePullUp: true,
-        onRefresh: () async {
-          final isSuccess = await getFeedList(true);
+      child: showErrorWidget
+          ? Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MyText(text: ref.watch(feedErrorProvider).toString(), color: Colors.black),
+                  TextButton(
+                    onPressed: () async {
+                      feedsNotifier.retriveFeeds(refresh: true);
+                    },
+                    child: const MyText(text: 'retry', color: Colors.blue),
+                  )
+                ],
+              ),
+            )
+          : SmartRefresher(
+              controller: refreshController,
+              enablePullUp: true,
+              onRefresh: () async {
+                final isSuccess = await getFeedList(true);
 
-          if (isSuccess) {
-            refreshController.refreshCompleted();
-          } else {
-            refreshController.refreshFailed();
-          }
-        },
-        onLoading: () async {
-          final isSuccess = await getFeedList(false);
+                if (isSuccess) {
+                  refreshController.refreshCompleted();
+                } else {
+                  refreshController.refreshFailed();
+                }
+              },
+              onLoading: () async {
+                final isSuccess = await getFeedList(false);
 
-          print('Laoding called');
+                print('Laoding called');
 
-          if (isSuccess) {
-            refreshController.loadComplete();
-          } else {
-            refreshController.loadFailed();
-          }
-        },
-        child: ListView.builder(
-            itemCount: feeds.length,
-            itemBuilder: (_, i) {
-              return FeedItem(feed: feeds[i]);
-            }),
-      ),
+                if (isSuccess) {
+                  refreshController.loadComplete();
+                } else {
+                  refreshController.loadFailed();
+                }
+              },
+              child: ListView.builder(
+                  itemCount: feeds.length,
+                  itemBuilder: (_, i) {
+                    return FeedItem(feed: feeds[i]);
+                  }),
+            ),
     ));
   }
 }
