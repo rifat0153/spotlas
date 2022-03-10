@@ -21,8 +21,8 @@ class _FeedDescriptionWidgetState extends State<FeedDescriptionWidget> {
   void initState() {
     super.initState();
 
-    if (widget.feed.description.length > 70) {
-      description1stHalf = widget.feed.description.substring(0, 70);
+    if (widget.feed.description.length > 130) {
+      description1stHalf = widget.feed.description.substring(0, 130);
     }
   }
 
@@ -40,7 +40,7 @@ class _FeedDescriptionWidgetState extends State<FeedDescriptionWidget> {
         padding: EdgeInsets.fromLTRB(padding.s, 0, padding.s, padding.xs),
         child: RichText(
           textAlign: TextAlign.left,
-          maxLines: showMore ? null : 2,
+          maxLines: showMore ? null : 3,
           text: TextSpan(
             text: '${widget.feed.authorUsername} ',
             style: const TextStyle(
